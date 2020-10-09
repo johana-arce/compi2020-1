@@ -68,7 +68,7 @@ public class Scanner {
 	public static Token Next () {  //zzz
         // intenta formar un token de la entrada
         //linea=1, col=13 y apunta al blanco 
-        while ((ch == ' ') || (ch == LF) || (ch == CR)) // bloque que saltea los blancos 
+        while ((ch == ' ') || (ch == LF) || (ch == CR) || ch=='_') // bloque que saltea los blancos 
         {
             NextCh();
         };
