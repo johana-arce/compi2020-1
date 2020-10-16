@@ -1427,6 +1427,15 @@ namespace at.jku.ssw.cc //Compilador //text_Box_Mio
             pr.Start();
         }
 
+        private void tokensToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex=3;
+            inicializa();
+            compilar();
+            
+            //tabControl1.SelectTab(3);
+        }
+
         private void Tokens_Click(object sender, EventArgs e)
         {
 
