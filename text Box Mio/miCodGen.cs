@@ -12,7 +12,7 @@ namespace at.jku.ssw.cc
     {
         public static int iii;
         static void f() { iii = 9; }
-    } ;
+    };
     public class Code
     {
         public static int segmAnteriorGram = 0;
@@ -217,7 +217,7 @@ namespace at.jku.ssw.cc
             }
 
             restaurarRichTextBox1conNegro();
-            Program1.form1.Editor.Select(Program1.form1.Editor.GetFirstCharIndexFromLine(linea1 - 1)+ col1 - 1,sizeToken1);
+            Program1.form1.Editor.Select(Program1.form1.Editor.GetFirstCharIndexFromLine(linea1 - 1) + col1 - 1, sizeToken1);
             //Inicio Modificación Grupo 1 - 31/09/15 - Token = Pinta Rojo ; LaToken = Pinta Verde
             if (pintar == "token")
             {
@@ -262,6 +262,7 @@ namespace at.jku.ssw.cc
                 actual = actual.Nodes[actual.Nodes.Count - 1].LastNode;
             }
             previo.Nodes.Add("( " + instrConNroLinea + " )");//previo quedo con el ultimo nodo expandido
+            previo.LastNode.EnsureVisible();
             //Grupo 2 FIN 301cargaInstr
             string texto = Program1.form1.richTextBox3.Text;
             Program1.form1.richTextBox3.SelectionStart = texto.Length;
@@ -431,13 +432,17 @@ namespace at.jku.ssw.cc
                         //////----------------------------------------------------------------Grupo 2 22/10/2015------------------------------------------------------
                         switch (x.adr)
                         {
-                            case 0: il.Emit(LDLOC0); cargaInstr("ldloc.0   ");
+                            case 0:
+                                il.Emit(LDLOC0); cargaInstr("ldloc.0   ");
                                 break;
-                            case 1: il.Emit(LDLOC1); cargaInstr("ldloc.1   ");
+                            case 1:
+                                il.Emit(LDLOC1); cargaInstr("ldloc.1   ");
                                 break;
-                            case 2: il.Emit(LDLOC2); cargaInstr("ldloc.2   ");
+                            case 2:
+                                il.Emit(LDLOC2); cargaInstr("ldloc.2   ");
                                 break;
-                            case 3: il.Emit(LDLOC3); cargaInstr("ldloc.3   ");
+                            case 3:
+                                il.Emit(LDLOC3); cargaInstr("ldloc.3   ");
                                 break;
                             default:
                                 string instr = "ldloc." + x.adr.ToString();
@@ -543,7 +548,8 @@ namespace at.jku.ssw.cc
                                         case 1: il.Emit(STLOC1); cargaInstr("stloc.1   "); break;
                                         case 2: il.Emit(STLOC2); cargaInstr("stloc.2   "); break;
                                         case 3: il.Emit(STLOC3); cargaInstr("stloc.3   "); break;
-                                        default: il.Emit(STLOC, nroDeArg);
+                                        default:
+                                            il.Emit(STLOC, nroDeArg);
                                             cargaInstr("stloc." + nroDeArg.ToString());
                                             break;
                                     }
@@ -552,6 +558,9 @@ namespace at.jku.ssw.cc
                                     //////----------------------------------------------------------------Grupo 2 22/10/2015------------------------------------------------------
                                     Parser.nroDeInstrCorriente++; cargaInstr("pop      ");
                                     Parser.cil[Parser.nroDeInstrCorriente].accionInstr = Parser.AccionInstr.pop;
+
+
+
                                     //////----------------------------------------------------------------Grupo 2 22/10/2015------------------------------------------------------
                                     break;
                                 }
@@ -779,5 +788,4 @@ namespace at.jku.ssw.cc
             this.type = type;
         }
     }
-
 }
